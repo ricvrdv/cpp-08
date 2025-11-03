@@ -13,6 +13,9 @@ int main() {
     for (int i = 0; i < 5; i++) {
         vec.push_back(i);
         lst.push_back(i);
+        deq.push_back(i);
+        if (i != 0)
+            deq.push_front(i);
     }
 
     std::cout << "Vector: { ";
@@ -54,6 +57,26 @@ int main() {
     catch (std::exception &e) {
         std::cerr << RED << "Exception: "<< RESET << e.what() << std::endl;
     }
+    
+    std::cout << std::endl << std::string(30, '-') << std::endl;
 
+    std::cout << "\nDeque: { ";
+    for (size_t i = 0; i < deq.size(); i++) {
+        std::cout << deq[i] << " ";
+    }
+    std::cout << "}" << std::endl;
+
+    try {
+        std::cout << "\nSearching for value = " << val1 << "\n";
+        easyfind(deq, val1);
+        std::cout << GREEN << "Value found in container" << RESET << "\n";
+
+        std::cout << "\nSearching for value = " << val2 << "\n";
+        easyfind(deq, val2);
+        std::cout << GREEN << "Value found in container" << RESET << "\n";
+    }
+    catch (std::exception &e) {
+        std::cerr << RED << "Exception: "<< RESET << e.what() << std::endl;
+    }
     return 0;
 }
