@@ -3,6 +3,9 @@
 
 # include <iostream>
 # include <vector>
+# include <algorithm>
+# include <exception>
+# include <limits>
 
 class   Span {
     private:
@@ -16,9 +19,19 @@ class   Span {
         Span &operator=( const Span &other );
         ~Span();
 
-        void    addNumber(int num);
-        void    shortestSpan();
-        void    longestSpan();
+        void    addNumber( int num );
+        int     shortestSpan();
+        int     longestSpan();
+
+        class   MaxExceeded : public std::exception {
+            public:
+                virtual const char* what() const throw();
+        };
+
+        class   MinElements : public std::exception {
+            public:
+                virtual const char* what() const throw();
+        }
 };
 
 #endif
