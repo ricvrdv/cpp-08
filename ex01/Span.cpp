@@ -1,25 +1,25 @@
 #include "Span.hpp"
 
 // Default Constructor
-Span::Span() : max_size_(0) {}
+Span::Span() : maxSize_(0) {}
 
 // Parametric Constructor
-Span::Span( unsigned int N ) : max_size_(N) {
+Span::Span( unsigned int N ) : maxSize_(N) {
     numbers_.reserve(N);
 }
 
 // Copy Constructor
 Span::Span( const Span &other ) {
-    this->max_size_ = other.max_size_;
-    for (unsigned int i = 0; i < max_size_; i++) {
+    this->maxSize_ = other.maxSize_;
+    for (unsigned int i = 0; i < maxSize_; i++) {
         this->numbers_[i] = other.numbers_[i];
     }
 }
 // Copy Assignment Operator
 Span&   Span::operator=( const Span &other ) {
     if (this != &other) {
-        this->max_size_ = other.max_size_;
-        for (unsigned int i = 0; i < max_size_; i++) {
+        this->maxSize_ = other.maxSize_;
+        for (unsigned int i = 0; i < maxSize_; i++) {
             this->numbers_[i] = other.numbers_[i];
         }
     }
@@ -29,9 +29,25 @@ Span&   Span::operator=( const Span &other ) {
 // Destructor
 Span::~Span() {}
 
+// Getters
+int     Span::getElement( unsigned int n ) const {
+    if (n >= numbers_.size()) {
+        throw std::out_of_range("Index out of range");
+    }
+    return numbers_[n];
+}
+
+unsigned int    Span::getMaxSize() const {
+    return maxSize_;
+}
+
+size_t  Span::getSize() const {
+    return (numbers_.size());
+}
+
 // Methods
 void    Span::addNumber( int num ) {
-    if (numbers_.size() >= max_size_)
+    if (numbers_.size() >= maxSize_)
         throw MaxExceeded();
     numbers_.push_back(num);
 }
@@ -50,6 +66,11 @@ int Span::shortestSpan() {
 }
 
 int Span::longestSpan() {
+    if (numbers_.size() < 2)
+        throw MinElements();
+    std::vector<int> sorted(numbers_);
+    std::sort(sorted.begin(), sorted.end());
+    return (sorted[sorted.size() - 1] - sorted[0]);
 }
 
 // Exceptions
