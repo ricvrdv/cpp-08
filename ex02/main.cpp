@@ -2,6 +2,7 @@
 #include <list>
 
 int main() {
+    // BASIC OPERATIONS TEST
     std::cout << GREEN << "\nBasic Operations Test "<< std::string(30, '=') << RESET << std::endl;
     MutantStack<int> mutStack;
 
@@ -21,6 +22,7 @@ int main() {
     mutStack.pop();
     std::cout << "Stack current size = " << mutStack.size() << std::endl;
 
+    // ITERATOR TRAVERSAL TEST
     std::cout << GREEN << "\nIterator Traversal Test "<< std::string(28, '=') << RESET << std::endl;
     std::cout << "non-const iterator traversal:" << std::endl;
     for (MutantStack<int>::iterator it = mutStack.begin(); it != mutStack.end(); it++) {
@@ -34,6 +36,7 @@ int main() {
         std::cout << *it << std::endl;
     }
 
+    // REVERSE ITERATOR TRAVERSAL TEST
     std::cout << GREEN << "\nReverse Iterator Traversal Test "<< std::string(20, '=') << RESET << std::endl;
     std::cout << "Pushing 42 ..." << std::endl;
     mutStack.push(42);
@@ -54,6 +57,7 @@ int main() {
         std::cout << *it << std::endl;
     }
 
+    // TEST INTEROPERABILITY WITH STD::STACK
     std::cout << GREEN << "\nTest interoperability with std::stack "<< std::string(14, '=') << RESET << std::endl;
     std::stack<int> stdStack(mutStack);
     std::cout << "std::stack top element -> " << stdStack.top() << std::endl;
@@ -61,6 +65,7 @@ int main() {
     stdStack.push(9);
     std::cout << "std::stack top element -> " << stdStack.top() << std::endl;
 
+    // VERIFICATION WITH STD::LIST
     std::cout << GREEN << "\nVerification with std::list "<< std::string(24, '=') << RESET << std::endl;
     std::list<int>  lst;
 
