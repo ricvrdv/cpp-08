@@ -18,6 +18,7 @@ int main() {
             deq.push_front(i);
     }
 
+    // TESTING WITH STD::VECTOR
     std::cout << "Vector: { ";
     for (size_t i = 0; i < vec.size(); i++) {
         std::cout << vec[i] << " ";
@@ -37,6 +38,7 @@ int main() {
         std::cerr << RED << "Exception: "<< RESET << e.what() << std::endl;
     }
 
+    // TESTING WITH STD::LIST
     std::cout << std::endl << std::string(30, '-') << std::endl;
 
     std::cout << "\nList: { ";
@@ -58,6 +60,7 @@ int main() {
         std::cerr << RED << "Exception: "<< RESET << e.what() << std::endl;
     }
     
+    // TESTING WITH STD::DEQUE
     std::cout << std::endl << std::string(30, '-') << std::endl;
 
     std::cout << "\nDeque: { ";
